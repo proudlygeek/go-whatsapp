@@ -90,7 +90,7 @@ func (wac *Conn) Send(msg interface{}) (string, error) {
 		if int(resp["status"].(float64)) == 200 {
 			return getMessageInfo(msgProto).Id, nil
 		}
-	case <-time.After(15 * time.Second):
+	case <-time.After(20 * time.Second):
 		return "ERROR", fmt.Errorf("sending message timed out")
 	}
 
