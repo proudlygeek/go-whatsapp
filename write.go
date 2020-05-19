@@ -119,7 +119,7 @@ func (wac *Conn) sendKeepAlive() error {
 		}
 		wac.ServerLastSeen = time.Unix(msecs/1000, (msecs%1000)*int64(time.Millisecond))
 
-	case <-time.After(wac.msgTimeout):
+	case <-time.After(20 * time.Second):
 		return ErrConnectionTimeout
 	}
 
